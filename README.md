@@ -24,14 +24,14 @@ $DB_con = null;
 $DB_con = new PDO("mysql:host=$DB_HOST", $DB_USERNAME, $DB_PASSWORD);
 $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ```
-To call the squeedPDO, simply pass you database connection like the below example
+To call the squeedPDO, simply pass your database connection on the squeedPDO class like the below example
 ```
 define('__ROOT__', dirname(dirname(__FILE__)));
 include(__ROOT__."../squeedPDO.php");
 $squeedPDO = new squeedPDO($DB_con);
 ```
 
-### squeedPDO Active Record Documentation
+# squeedPDO Active Record Documentation
 
 **$this->db->get();** <br />
 Runs the selection query and returns the result. Can be used by itself to retrieve all records from a table
