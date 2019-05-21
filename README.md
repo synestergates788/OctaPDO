@@ -5,11 +5,30 @@ A light-weight PHP-PDO database library used by squeedPHP framework. This librar
 
 installing squeedPDO does not require composer, just clone the project and put it in the directory where your site allocated.
 
-### Prerequisites
+## Prerequisites
 
 ```
 -Php 5.3+
 -mysql (any version that supports php 5.3+)
+```
+
+## How To Use
+squeedPDO needs a paramater consisting your database connection. so 
+we'll just assume that you already have a database connection similar below.
+```
+$DB_HOST = 'yourhost';
+$DB_USERNAME = 'your username';
+$DB_PASSWORD = 'your password';
+$DB_NAME = 'your database name';
+$DB_con = null;
+$DB_con = new PDO("mysql:host=$DB_HOST", $DB_USERNAME, $DB_PASSWORD);
+$DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+```
+To call the squeedPDO, simply pass you database connection like the below example
+```
+define('__ROOT__', dirname(dirname(__FILE__)));
+include(__ROOT__."../squeedPDO.php");
+$squeedPDO = new squeedPDO($DB_con);
 ```
 
 ## squeedPDO Active Record Documentation
