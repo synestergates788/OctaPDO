@@ -464,6 +464,8 @@ $result_data = $db->result(); //this will return an array of results
 --$db->not_like()
 --$db->or_not_like()
 ```
+# Contributing
+This project is open for collaborator. please feel free to contribute to the project.
 
 ### Author
 
