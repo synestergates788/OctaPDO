@@ -422,7 +422,6 @@ If you want to delete all data from a table, you can use the truncate() function
 
 **Example Of Queries Using squeedPHP Active Record** <br />
 ```
-Example of query using our custom database library
 $select = array(
    "*",
    "u.first_name",
