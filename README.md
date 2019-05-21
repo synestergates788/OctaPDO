@@ -1,18 +1,18 @@
 # squeedPDO
 A light-weight PHP-PDO database library used by squeedPHP framework. This library is inspired by codeigniter active record.
 
-## Getting Started
+### Getting Started
 
-installing squeedPDO does not require composer, just clone the project and put it in the directory where your site allocated.
+installing squeedPDO does not require composer, just clone the project and put it in the directory where your site locally allocated.
 
-## Prerequisites
+### Prerequisites
 
 ```
 -Php 5.3+
 -mysql (any version that supports php 5.3+)
 ```
 
-## How To Use
+### How To Use
 squeedPDO needs a paramater consisting your database connection. so 
 we'll just assume that you already have a database connection similar below.
 ```
