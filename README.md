@@ -31,7 +31,7 @@ include(__ROOT__."../squeedPDO.php");
 $squeedPDO = new squeedPDO($DB_con);
 ```
 
-## squeedPDO Active Record Documentation
+### squeedPDO Active Record Documentation
 
 **$this->db->get();** <br />
 Runs the selection query and returns the result. Can be used by itself to retrieve all records from a table
@@ -465,8 +465,6 @@ $result_data = $db->result(); //this will return an array of results
 --$db->or_not_like()
 ```
 
-
-
-## Author
+### Author
 
 Melquecedec Catang-catang
