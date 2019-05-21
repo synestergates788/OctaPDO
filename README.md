@@ -467,4 +467,5 @@ $result_data = $db->result(); //this will return an array of results
 
 ### Author
 
-Melquecedec Catang-catang
+Melquecedec Catang-catang <br />
+This is an [example link](http://example.com/).
