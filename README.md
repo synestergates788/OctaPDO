@@ -1,5 +1,5 @@
 # squeedPDO
-A light-weight PHP-PDO database library used by squeedPHP framework. This library is inspired by codeigniter active record.
+A light-weight PHP-PDO database class used by squeedPHP framework. This database class is inspired by codeigniter active record.
 
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) 
 [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) 
