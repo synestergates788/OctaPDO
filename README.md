@@ -468,7 +468,7 @@ This project is open for collaborator. please feel free to contribute to the pro
 
 # License
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
-- ** [MIT](../LICENSE.md)
+- [MIT](../LICENSE.md)
 - Copyright 2019 © squeedPDO.
 
 # Author
