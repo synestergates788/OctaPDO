@@ -63,7 +63,6 @@ foreach ($query->result() as $row)
 }
 ```
 <br />
-<br />
 
 **$this->db->select();** <br />
 Permits you to write the SELECT portion of your query:
@@ -80,7 +79,6 @@ $this->db->select() accepts an optional second parameter. If you set it to FALSE
 $this->db->select('(SELECT SUM(payments.amount) FROM payments WHERE payments.invoice_id=4') AS amount_paid', FALSE);
 $query = $this->db->get('mytable');
 ```
-<br />
 <br />
 
 **$this->db->join();** <br />
@@ -106,7 +104,6 @@ If you need a specific type of JOIN you can specify it via the third parameter o
 
 // Produces: LEFT JOIN comments ON comments.id = blogs.id
 ```
-<br />
 <br />
 
 **$this->db->where();** <br />
@@ -150,7 +147,6 @@ $this->db->where($where);
 **$this->db->where()** <br />
 accepts an optional third parameter. If you set it to FALSE, CodeIgniter will not try to protect your field or table names with backticks.
 <br />
-<br />
 
 **$this->db->or_where();** <br />
 This function is identical to the one above, except that multiple instances are joined by OR:
@@ -161,7 +157,6 @@ $this->db->or_where('id >', $id);
 // Produces: WHERE name != 'Joe' OR id > 50
 ```
 <br />
-<br />
 
 **$this->db->where_in();** <br />
 Generates a WHERE field IN ('item', 'item') SQL query joined with AND if appropriate
@@ -170,7 +165,6 @@ $names = array('Frank', 'Todd', 'James');
 $this->db->where_in('username', $names);
 // Produces: WHERE username IN ('Frank', 'Todd', 'James')
 ```
-<br />
 <br />
 
 **$this->db->or_where_in();** <br />
@@ -181,7 +175,6 @@ $this->db->or_where_in('username', $names);
 // Produces: OR username IN ('Frank', 'Todd', 'James')
 ```
 <br />
-<br />
 
 **$this->db->where_not_in();** <br />
 Generates a WHERE field NOT IN ('item', 'item') SQL query joined with AND if appropriate
@@ -191,7 +184,6 @@ $this->db->where_not_in('username', $names);
 // Produces: WHERE username NOT IN ('Frank', 'Todd', 'James')
 ```
 <br />
-<br />
 
 **$this->db->or_where_not_in();** <br />
 Generates a WHERE field NOT IN ('item', 'item') SQL query joined with OR if appropriate
@@ -200,7 +192,6 @@ $names = array('Frank', 'Todd', 'James');
 $this->db->or_where_not_in('username', $names);
 // Produces: OR username NOT IN ('Frank', 'Todd', 'James')
 ```
-<br />
 <br />
 
 **$this->db->like();** <br />
@@ -244,7 +235,6 @@ $this->db->like($array);
 // WHERE title LIKE '%match%' AND page1 LIKE '%match%' AND page2 LIKE '%match%'
 ```
 <br />
-<br />
 
 **$this->db->or_like();** <br />
 This function is identical to the one above, except that multiple instances are joined by OR:
@@ -263,7 +253,6 @@ $this->db->not_like('title', 'match');
 // WHERE title NOT LIKE '%match%
 ```
 <br />
-<br />
 
 **$this->db->or_not_like();** <br />
 This function is identical to not_like(), except that multiple instances are joined by OR:
@@ -273,7 +262,6 @@ $this->db->or_not_like('body', 'match');
 
 // WHERE title LIKE '%match% OR body NOT LIKE '%match%'
 ```
-<br />
 <br />
 
 **$this->db->group_by();** <br />
@@ -289,7 +277,6 @@ $this->db->group_by(array("title", "date"));
 
 // Produces: GROUP BY title, date
 ```
-<br />
 <br />
 
 **$this->db->order_by();** <br />
@@ -312,7 +299,6 @@ $this->db->order_by("name", "asc");
 
 // Produces: ORDER BY title DESC, name ASC 
 ```
-<br />
 <br />
 
 **$this->db->insert();** <br />
@@ -346,7 +332,6 @@ $this->db->insert('mytable', $object);
 // Produces: INSERT INTO mytable (title, content, date) VALUES ('My Title', 'My Content', 'My Date')
 ```
 The first parameter will contain the table name, the second is an object.
-<br />
 <br />
 
 **$this->db->update();** <br />
@@ -423,7 +408,6 @@ $this->db->delete($tables);
 ```
 If you want to delete all data from a table, you can use the truncate() function, or empty_table().
 <br />
-<br />
 
 **Example Of Queries Using squeedPHP Active Record** <br />
 ```
@@ -443,7 +427,6 @@ $db->join("user_type AS ut","ut.user_type_id=u.user_type","LEFT");
 $db->get('users AS u');
 $result_data = $db->result(); //this will return an array of results
 ```
-<br />
 <br />
 
 **LIST OF PRE-DEFINED CLASS** <br />
