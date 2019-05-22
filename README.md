@@ -430,38 +430,38 @@ $select = array(
    "ut.type"
 );
 
-$this->db->select($select);
-$this->db->order_by("u.userID","DESC");
-$this->db->group_by("u.user_type");
-$this->db->join("user_role AS ur","ur.user_role_id=ut.user_role","LEFT");
-$this->db->join("user_type AS ut","ut.user_type_id=u.user_type","LEFT");
-$this->db->get('users AS u');
-$result_data = $this->db->result(); //this will return an array of results
+$db->select($select);
+$db->order_by("u.userID","DESC");
+$db->group_by("u.user_type");
+$db->join("user_role AS ur","ur.user_role_id=ut.user_role","LEFT");
+$db->join("user_type AS ut","ut.user_type_id=u.user_type","LEFT");
+$db->get('users AS u');
+$result_data = $db->result(); //this will return an array of results
 ```
 <br />
 <br />
 
 **LIST OF PRE-DEFINED CLASS** <br />
 ```
---$this->db->insert_id() //return the last inserted id
---$this->db->select()
---$this->db->where()
---$this->db->or_where()
---$this->db->where_in()
---$this->db->or_where_in()
---$this->db->where_not_in()
---$this->db->or_where_not_in()
---$this->db->order_by()
---$this->db->group_by()
---$this->db->join()
---$this->db->get()
---$this->db->row()
---$this->db->num_rows()
---$this->db->result()
---$this->db->like()
---$this->db->or_like()
---$this->db->not_like()
---$this->db->or_not_like()
+--$db->insert_id() //return the last inserted id
+--$db->select()
+--$db->where()
+--$db->or_where()
+--$db->where_in()
+--$db->or_where_in()
+--$db->where_not_in()
+--$db->or_where_not_in()
+--$db->order_by()
+--$db->group_by()
+--$db->join()
+--$db->get()
+--$db->row()
+--$db->num_rows()
+--$db->result()
+--$db->like()
+--$db->or_like()
+--$db->not_like()
+--$db->or_not_like()
 ```
 # Contributing
 This project is open for collaborator. please feel free to contribute to the project.
