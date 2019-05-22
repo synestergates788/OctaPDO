@@ -468,14 +468,19 @@ $result_data = $db->result(); //this will return an array of results
 --$db->not_like()
 --$db->or_not_like()
 ```
-# Contributing
-This project is open for collaborator. please feel free to contribute to the project.
+
+# Author
+[Melquecedec Catang-catang](https://www.linkedin.com/in/melquecedec-catang-catang)
 
 # License
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 - [MIT](LICENSE.md)
 - Copyright 2019 © squeedPDO.
 
-# Author
+# Acknowledgments
+* Twig Template Engine of Symfony
+* Phpti (https://arshaw.com/phpti/)
 
-[Melquecedec Catang-catang](https://www.linkedin.com/in/melquecedec-catang-catang)
+# Support
+Reach me out on this social media site. <br />
+[Linkedin.com](https://www.linkedin.com/in/melquecedec-catang-catang)
