@@ -421,20 +421,26 @@ class squeedPDO extends Controller{
         $or_not_like = ($this->or_not_like) ? $this->or_not_like : '';
         /*end init var*/
 
-        $sql = $this->db->prepare("SELECT {$select} FROM {$table} {$join} {$where} {$or_where} {$where_in} {$or_where_in} {$where_not_in} {$or_where_not_in} {$like} {$or_like} {$not_like} {$or_not_like} {$group_by} {$order_by} {$limit}");
-        $sql->execute();
-        $tmp_result = $sql->fetch();
-        if($tmp_result){
-            foreach($tmp_result as $key=>$row){
-                $result[$key] = $row;
+        try{
+            $sql = $this->db->prepare("SELECT {$select} FROM {$table} {$join} {$where} {$or_where} {$where_in} {$or_where_in} {$where_not_in} {$or_where_not_in} {$like} {$or_like} {$not_like} {$or_not_like} {$group_by} {$order_by} {$limit}");
+            $sql->execute();
+            $tmp_result = $sql->fetch();
+            if($tmp_result){
+                foreach($tmp_result as $key=>$row){
+                    $result[$key] = $row;
+                }
             }
+
+            /*clear global variables*/
+            $this->clear_global_var();
+            /*end clearing global variables*/
+
+            return $result;
+
+        }catch(PDOException $e){
+            echo $e->getMessage().'<br><br>';
+            echo "SELECT {$select} FROM {$table} {$join} {$where} {$or_where} {$where_in} {$or_where_in} {$where_not_in} {$or_where_not_in} {$like} {$or_like} {$not_like} {$or_not_like} {$group_by} {$order_by} {$limit}";
         }
-
-        /*clear global variables*/
-        $this->clear_global_var();
-        /*end clearing global variables*/
-
-        return $result;
     }
 
     public function num_rows(){
@@ -460,20 +466,21 @@ class squeedPDO extends Controller{
         $or_not_like = ($this->or_not_like) ? $this->or_not_like : '';
         /*end init var*/
 
-        $sql = $this->db->prepare("SELECT {$select} FROM {$table} {$join} {$where} {$or_where} {$where_in} {$or_where_in} {$where_not_in} {$or_where_not_in} {$like} {$or_like} {$not_like} {$or_not_like} {$group_by} {$order_by} {$limit}");
-        $sql->execute();
-        $result = $sql->rowCount();
+        try{
+            $sql = $this->db->prepare("SELECT {$select} FROM {$table} {$join} {$where} {$or_where} {$where_in} {$or_where_in} {$where_not_in} {$or_where_not_in} {$like} {$or_like} {$not_like} {$or_not_like} {$group_by} {$order_by} {$limit}");
+            $sql->execute();
+            $result = $sql->rowCount();
 
-        /*clear global variables*/
-        $this->clear_global_var();
-        /*end clearing global variables*/
+            /*clear global variables*/
+            $this->clear_global_var();
+            /*end clearing global variables*/
 
-        return $result;
-    }
+            return $result;
 
-    function arrayToObject($array){
-        $object= new stdClass();
-        return array_to_obj($array,$object);
+        }catch(PDOException $e){
+            echo $e->getMessage().'<br><br>';
+            echo "SELECT {$select} FROM {$table} {$join} {$where} {$or_where} {$where_in} {$or_where_in} {$where_not_in} {$or_where_not_in} {$like} {$or_like} {$not_like} {$or_not_like} {$group_by} {$order_by} {$limit}";
+        }
     }
 
     public function result(){
@@ -499,23 +506,26 @@ class squeedPDO extends Controller{
         $or_not_like = ($this->or_not_like) ? $this->or_not_like : '';
         /*end init var*/
 
-        #echo "SELECT {$select} FROM {$table} {$join} {$where} {$or_where} {$where_in} {$or_where_in} {$where_not_in} {$or_where_not_in} {$like} {$or_like} {$not_like} {$or_not_like} {$group_by} {$order_by} {$limit}";
-        #exit;
-
-        $sql = $this->db->prepare("SELECT {$select} FROM {$table} {$join} {$where} {$or_where} {$where_in} {$or_where_in} {$where_not_in} {$or_where_not_in} {$like} {$or_like} {$not_like} {$or_not_like} {$group_by} {$order_by} {$limit}");
-        $sql->execute();
-        $tmp_result = $sql->setFetchMode(PDO::FETCH_ASSOC);
-        if($tmp_result){
-            foreach($sql->fetchAll() as $key=>$row){
-                $result[$key] = (object)$row;
+        try{
+            $sql = $this->db->prepare("SELECT {$select} FROM {$table} {$join} {$where} {$or_where} {$where_in} {$or_where_in} {$where_not_in} {$or_where_not_in} {$like} {$or_like} {$not_like} {$or_not_like} {$group_by} {$order_by} {$limit}");
+            $sql->execute();
+            $tmp_result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+            if($tmp_result){
+                foreach($sql->fetchAll() as $key=>$row){
+                    $result[$key] = (object)$row;
+                }
             }
+
+            /*clear global variables*/
+            $this->clear_global_var();
+            /*end clearing global variables*/
+
+            return $result;
+
+        }catch (PDOException $e){
+            echo $e->getMessage().'<br><br>';
+            echo "SELECT {$select} FROM {$table} {$join} {$where} {$or_where} {$where_in} {$or_where_in} {$where_not_in} {$or_where_not_in} {$like} {$or_like} {$not_like} {$or_not_like} {$group_by} {$order_by} {$limit}";
         }
-
-        /*clear global variables*/
-        $this->clear_global_var();
-        /*end clearing global variables*/
-
-        return $result;
     }
     /*end for joint queries*/
 }
