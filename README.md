@@ -466,6 +466,10 @@ $result_data = $db->result(); //this will return an array of results
 # Contributing
 This project is open for collaborator. please feel free to contribute to the project.
 
+### License
+* [MIT](../LICENSE.md)
+* Copyright 2019 © squeedPDO.
+
 ### Author
 
 [Melquecedec Catang-catang](https://www.linkedin.com/in/melquecedec-catang-catang)
