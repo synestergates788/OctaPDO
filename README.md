@@ -6,6 +6,9 @@ A light-weight PHP-PDO database class used by [squeedPHP](https://github.com/syn
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
 [![Badges](http://img.shields.io/:badges-8/10-ff6799.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger)
 
+# Author
+[Melquecedec Catang-catang](https://www.linkedin.com/in/melquecedec-catang-catang)
+
 ### Getting Started
 
 installing squeedPDO does not require composer, just clone the project and put it in the directory where your site locally allocated.
@@ -451,9 +454,6 @@ $result_data = $db->result(); //this will return an array of results
 --$db->not_like()
 --$db->or_not_like()
 ```
-
-# Author
-[Melquecedec Catang-catang](https://www.linkedin.com/in/melquecedec-catang-catang)
 
 # License
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
