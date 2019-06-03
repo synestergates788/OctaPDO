@@ -36,30 +36,75 @@ class squeedPDO extends Controller{
         $this->last_id = '';
         /*end clearing init variables*/
 
-        $table_fields = [];
-        $table_fields_val = [];
-        if($array){
-            foreach($array as $row=>$val){
-                $table_fields[] = $row;
-                $table_fields_val[] = "'".$val."'";
-            }
-
-            $sql_field = implode($table_fields, ",");
-            $sql_field_val = implode($table_fields_val, ",");
-
-            if($sql_field && $sql_field_val){
-                $sqls = $this->db->prepare("INSERT into {$table}({$sql_field}) VALUE ({$sql_field_val})");
-                if($sqls->execute()){
-                    #$this->last_id = $sqls->lastInsertId();
-                    return true;
-                }else{
-                    return false;
+        try{
+            $table_fields = [];
+            $table_fields_val = [];
+            if($array){
+                foreach($array as $row=>$val){
+                    $table_fields[] = $row;
+                    $table_fields_val[] = "'".$val."'";
                 }
 
-            }else{
-                //pdo error
-                return false;
+                $sql_field = implode($table_fields, ",");
+                $sql_field_val = implode($table_fields_val, ",");
+
+                if($sql_field && $sql_field_val){
+                    $sqls = $this->db->prepare("INSERT into {$table}({$sql_field}) VALUE ({$sql_field_val})");
+                    if($sqls->execute()){
+                        #$this->last_id = $sqls->lastInsertId();
+                        return true;
+                    }else{
+                        return false;
+                    }
+
+                }else{
+                    //pdo error
+                    return false;
+                }
             }
+
+        }catch(PDOException $e){
+            echo $e->getMessage().'<br><br>';
+        }
+    }
+	
+	public function insert_batch($array,$table){
+        /*clear init variable*/
+        $this->last_id = '';
+        /*end clearing init variables*/
+
+        try{
+            if($array){
+                foreach($array as $row_ib){
+                    $table_fields = [];
+                    $table_fields_val = [];
+                    if($row_ib){
+                        foreach($row_ib as $row=>$val){
+                            $table_fields[] = $row;
+                            $table_fields_val[] = "'".$val."'";
+                        }
+
+                        $sql_field = implode($table_fields, ",");
+                        $sql_field_val = implode($table_fields_val, ",");
+
+                        if($sql_field && $sql_field_val){
+                            $sqls = $this->db->prepare("INSERT into {$table}({$sql_field}) VALUE ({$sql_field_val})");
+                            if(!$sqls->execute()){
+                                return false;
+                            }
+
+                        }else{
+                            //pdo error
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
+
+        }catch(PDOException $e){
+            echo $e->getMessage().'<br><br>';
         }
     }
 
@@ -70,34 +115,80 @@ class squeedPDO extends Controller{
         $where_fields = [];
         $where_fields_val = [];
 
-        if($where){
-            foreach($where as $key=>$row_w){
-                $where_fields[] = $key."='".$row_w."'";
-                $where_fields_val[] = $row_w;
+        try{
+            if($where){
+                foreach($where as $key=>$row_w){
+                    $where_fields[] = $key."='".$row_w."'";
+                    $where_fields_val[] = $row_w;
+                }
             }
-        }
 
-        if($data){
-            foreach($data as $row=>$val){
-                $table_fields[] = $row."='".$val."'";
-                $table_fields_val[] = "'".$val."'";
+            if($data){
+                foreach($data as $row=>$val){
+                    $table_fields[] = $row."='".$val."'";
+                    $table_fields_val[] = "'".$val."'";
+                }
             }
-        }
 
-        $sql_field = implode($table_fields, ",");
-        $sql_where_field = implode($where_fields, ",");
+            $sql_field = implode($table_fields, ",");
+            $sql_where_field = implode($where_fields, ",");
 
-        if($sql_field && $sql_where_field){
-            $sqls = $this->db->prepare("UPDATE {$table} SET {$sql_field} WHERE {$sql_where_field}");
-            if($sqls->execute()){
-                return true;
+            if($sql_field && $sql_where_field){
+                $sqls = $this->db->prepare("UPDATE {$table} SET {$sql_field} WHERE {$sql_where_field}");
+                if($sqls->execute()){
+                    return true;
+                }else{
+                    return false;
+                }
+
             }else{
+                //pdo error
                 return false;
             }
 
-        }else{
-            //pdo error
-            return false;
+        }catch(PDOException $e){
+            echo $e->getMessage().'<br><br>';
+        }
+    }
+	
+	public function update_batch($table,$data,$where){
+        try{
+            if($data){
+                foreach($data as $key_ub=>$row_ub){
+                    $table_fields = [];
+                    $where_fields = [];
+
+                    if($row_ub){
+                        foreach($row_ub as $key_ub_data=>$row_ub_data){
+                            if($key_ub_data == $where){
+                                $where_fields[] = $key_ub_data."='".$row_ub_data."'";
+
+                            }else{
+                                $table_fields[] = $key_ub_data."='".$row_ub_data."'";
+                            }
+                        }
+                    }
+
+                    $sql_field = implode($table_fields, ",");
+                    $sql_where_field = implode($where_fields, ",");
+
+                    echo "UPDATE {$table} SET {$sql_field} WHERE {$sql_where_field} <br>";
+
+                    if($sql_field && $sql_where_field){
+                        $sqls = $this->db->prepare("UPDATE {$table} SET {$sql_field} WHERE {$sql_where_field}");
+                        if(!$sqls->execute()){
+                            return false;
+                        }
+
+                    }else{
+                        //pdo error
+                        return false;
+                    }
+                }
+            }
+
+        }catch(PDOException $e){
+            echo $e->getMessage().'<br><br>';
         }
     }
 
