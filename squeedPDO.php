@@ -172,8 +172,6 @@ class squeedPDO extends Controller{
                     $sql_field = implode($table_fields, ",");
                     $sql_where_field = implode($where_fields, ",");
 
-                    echo "UPDATE {$table} SET {$sql_field} WHERE {$sql_where_field} <br>";
-
                     if($sql_field && $sql_where_field){
                         $sqls = $this->db->prepare("UPDATE {$table} SET {$sql_field} WHERE {$sql_where_field}");
                         if(!$sqls->execute()){
