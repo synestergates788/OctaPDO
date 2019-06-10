@@ -77,7 +77,7 @@ $query = $db->get('mytable');
 
 // Produces: SELECT title, content, date FROM mytable
 ```
-$db->select() accepts an optional second parameter. If you set it to FALSE, CodeIgniter will not try to protect your field or table names with backticks. This is useful if you need a compound select statement.
+$db->select() accepts an optional second parameter. If you set it to FALSE, squeedPDO will not try to protect your field or table names with backticks. This is useful if you need a compound select statement.
 ```
 $db->select('(SELECT SUM(payments.amount) FROM payments WHERE payments.invoice_id=4') AS amount_paid', FALSE);
 $query = $db->get('mytable');
@@ -148,7 +148,7 @@ $where = "name='Joe' AND status='boss' OR status='active'";
 $db->where($where);
 ```
 **$db->where()** <br />
-accepts an optional third parameter. If you set it to FALSE, CodeIgniter will not try to protect your field or table names with backticks.
+accepts an optional third parameter. If you set it to FALSE, squeedPDO will not try to protect your field or table names with backticks.
 <br />
 
 **$db->or_where();** <br />
