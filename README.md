@@ -36,29 +36,29 @@ To call the squeedPDO, simply pass your database connection on the squeedPDO cla
 ```
 define('__ROOT__', dirname(dirname(__FILE__)));
 include(__ROOT__."../squeedPDO.php");
-$squeedPDO = new squeedPDO($DB_con);
+$db = new squeedPDO($DB_con);
 ```
 
 # squeedPDO Active Record Documentation
 
-**$this->db->get();** <br />
+**$db->get();** <br />
 Runs the selection query and returns the result. Can be used by itself to retrieve all records from a table
 
 ```
-$query = $this->db->get('mytable');
+$query = $db->get('mytable');
 
 // Produces: SELECT * FROM mytable
 ```
 
 The second and third parameters enable you to set a limit and offset clause:
 ```
-$query = $this->db->get('mytable', 10, 20); <br />
+$query = $db->get('mytable', 10, 20); <br />
 // Produces: SELECT * FROM mytable LIMIT 20, 10 (in MySQL. Other databases have slightly different syntax)
 ```
 
 You'll notice that the above function is assigned to a variable named $query, which can be used to show the results:
 ```
-$query = $this->db->get('mytable');
+$query = $db->get('mytable');
 
 foreach ($query->result() as $row)
 {
@@ -67,32 +67,32 @@ foreach ($query->result() as $row)
 ```
 <br />
 
-**$this->db->select();** <br />
+**$db->select();** <br />
 Permits you to write the SELECT portion of your query:
 
 ```
-$this->db->select('title, content, date');
+$db->select('title, content, date');
 
-$query = $this->db->get('mytable');
+$query = $db->get('mytable');
 
 // Produces: SELECT title, content, date FROM mytable
 ```
-$this->db->select() accepts an optional second parameter. If you set it to FALSE, CodeIgniter will not try to protect your field or table names with backticks. This is useful if you need a compound select statement.
+$db->select() accepts an optional second parameter. If you set it to FALSE, CodeIgniter will not try to protect your field or table names with backticks. This is useful if you need a compound select statement.
 ```
-$this->db->select('(SELECT SUM(payments.amount) FROM payments WHERE payments.invoice_id=4') AS amount_paid', FALSE);
-$query = $this->db->get('mytable');
+$db->select('(SELECT SUM(payments.amount) FROM payments WHERE payments.invoice_id=4') AS amount_paid', FALSE);
+$query = $db->get('mytable');
 ```
 <br />
 
-**$this->db->join();** <br />
+**$db->join();** <br />
 Permits you to write the JOIN portion of your query:
 
 ```
-$this->db->select('*');
-$this->db->from('blogs');
-$this->db->join('comments', 'comments.id = blogs.id');
+$db->select('*');
+$db->from('blogs');
+$db->join('comments', 'comments.id = blogs.id');
 
-$query = $this->db->get();
+$query = $db->get();
 
 // Produces:
 // SELECT * FROM blogs
@@ -103,30 +103,30 @@ Multiple function calls can be made if you need several joins in one query. <br 
 If you need a specific type of JOIN you can specify it via the third parameter of the function. Options are: left, right, outer, inner, left outer, and right outer.
 
 ```
- $this->db->join('comments', 'comments.id = blogs.id', 'left');
+ $db->join('comments', 'comments.id = blogs.id', 'left');
 
 // Produces: LEFT JOIN comments ON comments.id = blogs.id
 ```
 <br />
 
-**$this->db->where();** <br />
+**$db->where();** <br />
 This function enables you to set WHERE clauses using one of four methods:
 
 * Simple key/value method: <br />
 Notice that the equal sign is added for you.
 If you use multiple function calls they will be chained together with AND between them:
 	```
-	$this->db->where('name', $name);
-	$this->db->where('title', $title);
-	$this->db->where('status', $status);
+	$db->where('name', $name);
+	$db->where('title', $title);
+	$db->where('status', $status);
 
 	// WHERE name = 'Joe' AND title = 'boss' AND status = 'active' 
 	```
 * Custom key/value method: <br />
 You can include an operator in the first parameter in order to control the comparison:
 ```
-$this->db->where('name !=', $name);
-$this->db->where('id <', $id);
+$db->where('name !=', $name);
+$db->where('id <', $id);
 
 // Produces: WHERE name != 'Joe' AND id < 45 
 ```
@@ -135,7 +135,7 @@ You can include your own operators using this method as well:
 ```
 $array = array('name' => $name, 'title' => $title, 'status' => $status);
 
-$this->db->where($array);
+$db->where($array);
 
 // Produces: WHERE name = 'Joe' AND title = 'boss' AND status = 'active' 
 ```
@@ -145,166 +145,166 @@ You can write your own clauses manually:
 ```
 $where = "name='Joe' AND status='boss' OR status='active'";
 
-$this->db->where($where);
+$db->where($where);
 ```
-**$this->db->where()** <br />
+**$db->where()** <br />
 accepts an optional third parameter. If you set it to FALSE, CodeIgniter will not try to protect your field or table names with backticks.
 <br />
 
-**$this->db->or_where();** <br />
+**$db->or_where();** <br />
 This function is identical to the one above, except that multiple instances are joined by OR:
 ```
- $this->db->where('name !=', $name);
-$this->db->or_where('id >', $id);
+ $db->where('name !=', $name);
+$db->or_where('id >', $id);
 
 // Produces: WHERE name != 'Joe' OR id > 50
 ```
 <br />
 
-**$this->db->where_in();** <br />
+**$db->where_in();** <br />
 Generates a WHERE field IN ('item', 'item') SQL query joined with AND if appropriate
 ```
 $names = array('Frank', 'Todd', 'James');
-$this->db->where_in('username', $names);
+$db->where_in('username', $names);
 // Produces: WHERE username IN ('Frank', 'Todd', 'James')
 ```
 <br />
 
-**$this->db->or_where_in();** <br />
+**$db->or_where_in();** <br />
 Generates a WHERE field IN ('item', 'item') SQL query joined with OR if appropriate
 ```
 $names = array('Frank', 'Todd', 'James');
-$this->db->or_where_in('username', $names);
+$db->or_where_in('username', $names);
 // Produces: OR username IN ('Frank', 'Todd', 'James')
 ```
 <br />
 
-**$this->db->where_not_in();** <br />
+**$db->where_not_in();** <br />
 Generates a WHERE field NOT IN ('item', 'item') SQL query joined with AND if appropriate
 ```
  $names = array('Frank', 'Todd', 'James');
-$this->db->where_not_in('username', $names);
+$db->where_not_in('username', $names);
 // Produces: WHERE username NOT IN ('Frank', 'Todd', 'James')
 ```
 <br />
 
-**$this->db->or_where_not_in();** <br />
+**$db->or_where_not_in();** <br />
 Generates a WHERE field NOT IN ('item', 'item') SQL query joined with OR if appropriate
 ```
 $names = array('Frank', 'Todd', 'James');
-$this->db->or_where_not_in('username', $names);
+$db->or_where_not_in('username', $names);
 // Produces: OR username NOT IN ('Frank', 'Todd', 'James')
 ```
 <br />
 
-**$this->db->like();** <br />
+**$db->like();** <br />
 This function enables you to generate LIKE clauses, useful for doing searches.
 
 * Simple key/value method: <br />
 ```
-$this->db->like('title', 'match');
+$db->like('title', 'match');
 
 // Produces: WHERE title LIKE '%match%' 
 ```
 If you use multiple function calls they will be chained together with AND between them:
 ```
-$this->db->like('title', 'match');
-$this->db->like('body', 'match');
+$db->like('title', 'match');
+$db->like('body', 'match');
 
 // WHERE title LIKE '%match%' AND body LIKE '%match%
 ```
 If you want to control where the wildcard (%) is placed, you can use an optional third argument. Your options are 'before', 'after' and 'both' (which is the default). 
 ```
-$this->db->like('title', 'match', 'before');
+$db->like('title', 'match', 'before');
 // Produces: WHERE title LIKE '%match'
 
-$this->db->like('title', 'match', 'after');
+$db->like('title', 'match', 'after');
 // Produces: WHERE title LIKE 'match%'
 
-$this->db->like('title', 'match', 'both');
+$db->like('title', 'match', 'both');
 // Produces: WHERE title LIKE '%match%' 
 ```
 If you do not want to use the wildcard (%) you can pass to the optional third argument the option 'none'. 
 ```
-$this->db->like('title', 'match', 'none');
+$db->like('title', 'match', 'none');
 // Produces: WHERE title LIKE 'match' 
 ```
 * Associative array method: <br />
 ```
 $array = array('title' => $match, 'page1' => $match, 'page2' => $match);
 
-$this->db->like($array);
+$db->like($array);
 
 // WHERE title LIKE '%match%' AND page1 LIKE '%match%' AND page2 LIKE '%match%'
 ```
 <br />
 
-**$this->db->or_like();** <br />
+**$db->or_like();** <br />
 This function is identical to the one above, except that multiple instances are joined by OR:
 ```
-$this->db->like('title', 'match');
-$this->db->or_like('body', $match);
+$db->like('title', 'match');
+$db->or_like('body', $match);
 
 // WHERE title LIKE '%match%' OR body LIKE '%match%'
 ```
 
-**$this->db->not_like();** <br />
+**$db->not_like();** <br />
 This function is identical to like(), except that it generates NOT LIKE statements:
 ```
-$this->db->not_like('title', 'match');
+$db->not_like('title', 'match');
 
 // WHERE title NOT LIKE '%match%
 ```
 <br />
 
-**$this->db->or_not_like();** <br />
+**$db->or_not_like();** <br />
 This function is identical to not_like(), except that multiple instances are joined by OR:
 ```
-$this->db->like('title', 'match');
-$this->db->or_not_like('body', 'match');
+$db->like('title', 'match');
+$db->or_not_like('body', 'match');
 
 // WHERE title LIKE '%match% OR body NOT LIKE '%match%'
 ```
 <br />
 
-**$this->db->group_by();** <br />
+**$db->group_by();** <br />
 Permits you to write the GROUP BY portion of your query:
 ```
-$this->db->group_by("title");
+$db->group_by("title");
 
 // Produces: GROUP BY title 
 ```
 You can also pass an array of multiple values as well:
 ```
-$this->db->group_by(array("title", "date"));
+$db->group_by(array("title", "date"));
 
 // Produces: GROUP BY title, date
 ```
 <br />
 
-**$this->db->order_by();** <br />
+**$db->order_by();** <br />
 Lets you set an ORDER BY clause. The first parameter contains the name of the column you would like to order by. The second parameter lets you set the direction of the result. Options are asc or desc, or random. 
 ```
-$this->db->order_by("title", "desc");
+$db->order_by("title", "desc");
 
 // Produces: ORDER BY title DESC 
 ```
 You can also pass your own string in the first parameter:
 ```
-$this->db->order_by('title desc, name asc');
+$db->order_by('title desc, name asc');
 
 // Produces: ORDER BY title DESC, name ASC 
 ```
 Or multiple function calls can be made if you need multiple fields.
 ```
-$this->db->order_by("title", "desc");
-$this->db->order_by("name", "asc");
+$db->order_by("title", "desc");
+$db->order_by("name", "asc");
 
 // Produces: ORDER BY title DESC, name ASC 
 ```
 <br />
 
-**$this->db->insert();** <br />
+**$db->insert();** <br />
 Generates an insert string based on the data you supply, and runs the query. You can either pass an array or an object to the function. Here is an example using an array:
 ```
 $data = array(
@@ -313,7 +313,7 @@ $data = array(
    'date' => 'My date'
 );
 
-$this->db->insert('mytable', $data);
+$db->insert('mytable', $data);
 
 // Produces: INSERT INTO mytable (title, name, date) VALUES ('My title', 'My name', 'My date')
 ```
@@ -330,14 +330,14 @@ Here is an example using an object:
 
 $object = new Myclass;
 
-$this->db->insert('mytable', $object);
+$db->insert('mytable', $object);
 
 // Produces: INSERT INTO mytable (title, content, date) VALUES ('My Title', 'My Content', 'My Date')
 ```
 The first parameter will contain the table name, the second is an object.
 <br />
 
-**$this->db->update();** <br />
+**$db->update();** <br />
 Generates an update string and runs the query based on the data you supply. You can pass an array or an object to the function. Here is an example using an array:
 ```
  $data = array(
@@ -346,8 +346,8 @@ Generates an update string and runs the query based on the data you supply. You 
                'date' => $date
             );
 
-$this->db->where('id', $id);
-$this->db->update('mytable', $data);
+$db->where('id', $id);
+$db->update('mytable', $data);
 
 // Produces:
 // UPDATE mytable
@@ -366,29 +366,29 @@ Or you can supply an object:
 
 $object = new Myclass;
 
-$this->db->where('id', $id);
-$this->db->update('mytable', $object);
+$db->where('id', $id);
+$db->update('mytable', $object);
 
 // Produces:
 // UPDATE mytable
 // SET title = '{$title}', name = '{$name}', date = '{$date}'
 // WHERE id = $id
 ```
-You'll notice the use of the $this->db->where() function, enabling you to set the WHERE clause. You can optionally pass this information directly into the update function as a string:
+You'll notice the use of the $db->where() function, enabling you to set the WHERE clause. You can optionally pass this information directly into the update function as a string:
 ```
-$this->db->update('mytable', $data, "id = 4");
+$db->update('mytable', $data, "id = 4");
 ```
 Or as an array:
 ```
-$this->db->update('mytable', $data, array('id' => $id));
+$db->update('mytable', $data, array('id' => $id));
 ```
-You may also use the $this->db->set() function described above when performing updates.
+You may also use the $db->set() function described above when performing updates.
 <br />
 
-**$this->db->delete();** <br />
+**$db->delete();** <br />
 Generates a delete SQL string and runs the query.
 ```
-$this->db->delete('mytable', array('id' => $id));
+$db->delete('mytable', array('id' => $id));
 
 // Produces:
 // DELETE FROM mytable
@@ -396,8 +396,8 @@ $this->db->delete('mytable', array('id' => $id));
 ```
 The first parameter is the table name, the second is the where clause. You can also use the where() or or_where() functions instead of passing the data to the second parameter of the function:
 ```
- $this->db->where('id', $id);
-$this->db->delete('mytable');
+ $db->where('id', $id);
+$db->delete('mytable');
 
 // Produces:
 // DELETE FROM mytable
@@ -406,8 +406,8 @@ $this->db->delete('mytable');
 An array of table names can be passed into delete() if you would like to delete data from more than 1 table.
 ```
 $tables = array('table1', 'table2', 'table3');
-$this->db->where('id', '5');
-$this->db->delete($tables);
+$db->where('id', '5');
+$db->delete($tables);
 ```
 If you want to delete all data from a table, you can use the truncate() function, or empty_table().
 <br />
