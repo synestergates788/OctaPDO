@@ -490,7 +490,7 @@ class squeedPDO extends Controller{
     public function row(){
         /*init var*/
         $result = [];
-        $select = ($this->select) ? implode(',',$this->select) : '';
+        $select = ($this->select) ? implode(',',$this->select) : '*';
         $order_by = ($this->order_by) ? 'ORDER BY '.$this->order_by : '';
         $join = ($this->join) ? $this->join : '';
         $group_by = ($this->group_by) ? $this->group_by : '';
@@ -535,7 +535,7 @@ class squeedPDO extends Controller{
     public function num_rows(){
         /*init var*/
         $result = 0;
-        $select = ($this->select) ? implode(',',$this->select) : '';
+        $select = ($this->select) ? implode(',',$this->select) : '*';
         $order_by = ($this->order_by) ? 'ORDER BY '.$this->order_by : '';
         $join = ($this->join) ? $this->join : '';
         $group_by = ($this->group_by) ? $this->group_by : '';
