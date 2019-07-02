@@ -1,4 +1,4 @@
-# squeedPDO
+# OctaPDO
 A light-weight PHP-PDO database class used by [squeedPHP](https://github.com/synestergates788/squeedPHP) framework. This database class is inspired by codeigniter active record.
 
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) 
@@ -11,7 +11,7 @@ A light-weight PHP-PDO database class used by [squeedPHP](https://github.com/syn
 
 ### Getting Started
 
-installing squeedPDO does not require composer, just clone the project and put it in the directory where your site locally allocated.
+installing OctaPDO does not require composer, just clone the project and put it in the directory where your site locally allocated.
 
 ### Prerequisites
 
@@ -21,7 +21,7 @@ installing squeedPDO does not require composer, just clone the project and put i
 ```
 
 ### How To Use
-squeedPDO needs a paramater consisting your database connection. so 
+OctaPDO needs a paramater consisting your database connection. so 
 we'll just assume that you already have a database connection similar below.
 ```
 $DB_HOST = 'yourhost';
@@ -32,14 +32,14 @@ $DB_con = null;
 $DB_con = new PDO("mysql:host=$DB_HOST", $DB_USERNAME, $DB_PASSWORD);
 $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ```
-To call the squeedPDO, simply pass your database connection on the squeedPDO class like the below example
+To call the OctaPDO, simply pass your database connection on the OctaPDO class like the below example
 ```
 define('__ROOT__', dirname(dirname(__FILE__)));
-include(__ROOT__."../squeedPDO.php");
-$db = new squeedPDO($DB_con);
+include(__ROOT__."../OctaPDO.php");
+$db = new OctaPDO($DB_con);
 ```
 
-# squeedPDO Active Record Documentation
+# OctaPDO Active Record Documentation
 
 **$db->get();** <br />
 Runs the selection query and returns the result. Can be used by itself to retrieve all records from a table
@@ -77,7 +77,7 @@ $query = $db->get('mytable');
 
 // Produces: SELECT title, content, date FROM mytable
 ```
-$db->select() accepts an optional second parameter. If you set it to FALSE, squeedPDO will not try to protect your field or table names with backticks. This is useful if you need a compound select statement.
+$db->select() accepts an optional second parameter. If you set it to FALSE, OctaPDO will not try to protect your field or table names with backticks. This is useful if you need a compound select statement.
 ```
 $db->select('(SELECT SUM(payments.amount) FROM payments WHERE payments.invoice_id=4') AS amount_paid', FALSE);
 $query = $db->get('mytable');
@@ -148,7 +148,7 @@ $where = "name='Joe' AND status='boss' OR status='active'";
 $db->where($where);
 ```
 **$db->where()** <br />
-accepts an optional third parameter. If you set it to FALSE, squeedPDO will not try to protect your field or table names with backticks.
+accepts an optional third parameter. If you set it to FALSE, OctaPDO will not try to protect your field or table names with backticks.
 <br />
 
 **$db->or_where();** <br />
@@ -458,7 +458,7 @@ $result_data = $db->result(); //this will return an array of results
 # License
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 - [MIT](LICENSE.md)
-- Copyright 2019 © squeedPDO.
+- Copyright 2019 © OctaPDO.
 
 # Acknowledgments
 * Twig Template Engine of Symfony
