@@ -1,6 +1,6 @@
 <?php
 
-class squeedPDO extends Controller{
+class OctaPDO extends Controller{
     var $con;
     var $field;
     var $db;
