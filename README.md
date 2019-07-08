@@ -1,7 +1,7 @@
 # OctaPDO
 A light-weight PHP-PDO database class used by [squeedPHP](https://github.com/synestergates788/squeedPHP) framework. This database class is inspired by codeigniter active record.
 
-[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) 
+[![Build Status](https://travis-ci.org/synestergates788/OctaPDO.svg?branch=master)](https://travis-ci.org/synestergates788/OctaPDO)
 [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
 [![Badges](http://img.shields.io/:badges-8/10-ff6799.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger)
