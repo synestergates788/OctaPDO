@@ -16,5 +16,5 @@ matrix:
 sudo: false
 
 before_script: composer install
-script: phpunit Test.php
-#script: ./build.sh
+#script: phpunit Test.php
+script: ./build.sh
