@@ -10,13 +10,13 @@ php:
   #- hhvm # on Trusty only
   #- nightly
 
-matrix:
-  include:
+#matrix:
+#  include:
     #- php: 7.0
-      dist: precise
+#      dist: precise
 
 #sudo: false
 
 before_script: composer install
-script: vendor/bin/phpunit UnitTest
+script: phpunit UnitTest
 #script: ./build.sh
