@@ -6,6 +6,9 @@ php:
 - 7.1
 - 7.2
 
+before_script:
+- composer install --no-interaction
+
 # Note: Code coverage requires php-xDebug extension enabled on CI server
 
 #install:
@@ -17,9 +20,9 @@ php:
 
 #after_script:
 
-after_success:
+#after_success:
 # Submit coverage report to https://codecov.io
-- bash <(curl -s https://codecov.io/bash)
+#- bash <(curl -s https://codecov.io/bash)
 
 #after_failure:
 
