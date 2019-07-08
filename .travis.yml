@@ -18,7 +18,7 @@ php:
 #sudo: false
 
 before_script:
-  - composer update
+  - composer self-update
   - composer install
   - phpenv config-rm xdebug.ini
 
