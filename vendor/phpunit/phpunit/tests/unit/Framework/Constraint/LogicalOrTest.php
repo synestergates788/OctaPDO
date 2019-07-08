@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PHPUnit\Framework\Constraint;
 
 use PHPUnit\Framework\ExpectationFailedException;
@@ -14,20 +15,20 @@ use PHPUnit\Framework\TestFailure;
 
 final class LogicalOrTest extends ConstraintTestCase
 {
-    public function testSetConstraintsDecoratesNonConstraintWithIsEqual(): void
+    public function testSetConstraintsDecoratesNonConstraintWithIsEqual()
     {
         $constraints = [
-            new \stdClass,
+            new \stdClass(),
         ];
 
-        $constraint = new LogicalOr;
+        $constraint = new LogicalOr();
 
         $constraint->setConstraints($constraints);
 
-        $this->assertTrue($constraint->evaluate(new \stdClass, '', true));
+        $this->assertTrue($constraint->evaluate(new \stdClass(), '', true));
     }
 
-    public function testCountReturnsCountOfComposedConstraints(): void
+    public function testCountReturnsCountOfComposedConstraints()
     {
         $counts = [
             3,
@@ -39,7 +40,7 @@ final class LogicalOrTest extends ConstraintTestCase
             return \CountConstraint::fromCount($count);
         }, $counts);
 
-        $constraint = new LogicalOr;
+        $constraint = new LogicalOr();
 
         $constraint->setConstraints($constraints);
 
@@ -48,7 +49,7 @@ final class LogicalOrTest extends ConstraintTestCase
         $this->assertSame($expected, $constraint->count());
     }
 
-    public function testToStringReturnsImplodedStringRepresentationOfComposedConstraintsGluedWithOr(): void
+    public function testToStringReturnsImplodedStringRepresentationOfComposedConstraintsGluedWithOr()
     {
         $names = [
             'is healthy',
@@ -60,7 +61,7 @@ final class LogicalOrTest extends ConstraintTestCase
             return \NamedConstraint::fromName($name);
         }, $names);
 
-        $constraint = new LogicalOr;
+        $constraint = new LogicalOr();
 
         $constraint->setConstraints($constraints);
 
@@ -74,9 +75,9 @@ final class LogicalOrTest extends ConstraintTestCase
      *
      * @param Constraint[] $constraints
      */
-    public function testEvaluateReturnsFalseIfAllOfTheComposedConstraintsEvaluateToFalse(array $constraints): void
+    public function testEvaluateReturnsFalseIfAllOfTheComposedConstraintsEvaluateToFalse(array $constraints)
     {
-        $constraint = new LogicalOr;
+        $constraint = new LogicalOr();
 
         $constraint->setConstraints($constraints);
 
@@ -88,9 +89,9 @@ final class LogicalOrTest extends ConstraintTestCase
      *
      * @param Constraint[] $constraints
      */
-    public function testEvaluateReturnsTrueIfAnyOfTheComposedConstraintsEvaluateToTrue(array $constraints): void
+    public function testEvaluateReturnsTrueIfAnyOfTheComposedConstraintsEvaluateToTrue(array $constraints)
     {
-        $constraint = new LogicalOr;
+        $constraint = new LogicalOr();
 
         $constraint->setConstraints($constraints);
 
@@ -102,11 +103,11 @@ final class LogicalOrTest extends ConstraintTestCase
      *
      * @param Constraint[] $constraints
      */
-    public function testEvaluateThrowsExceptionIfAllOfTheComposedConstraintsEvaluateToFalse(array $constraints): void
+    public function testEvaluateThrowsExceptionIfAllOfTheComposedConstraintsEvaluateToFalse(array $constraints)
     {
         $other = 'whatever';
 
-        $constraint = new LogicalOr;
+        $constraint = new LogicalOr();
 
         $constraint->setConstraints($constraints);
 
@@ -133,12 +134,12 @@ EOF;
      *
      * @param Constraint[] $constraints
      */
-    public function testEvaluateThrowsExceptionWithCustomMessageIfAllOfTheComposedConstraintsEvaluateToFalse(array $constraints): void
+    public function testEvaluateThrowsExceptionWithCustomMessageIfAllOfTheComposedConstraintsEvaluateToFalse(array $constraints)
     {
         $other             = 'whatever';
         $customDescription = 'Not very happy about the results at this point in time, I have to admit!';
 
-        $constraint = new LogicalOr;
+        $constraint = new LogicalOr();
 
         $constraint->setConstraints($constraints);
 
@@ -169,9 +170,9 @@ EOF;
      *
      * @param Constraint[] $constraints
      */
-    public function testEvaluateReturnsNothingIfAnyOfTheComposedConstraintsEvaluateToTrue(array $constraints): void
+    public function testEvaluateReturnsNothingIfAnyOfTheComposedConstraintsEvaluateToTrue(array $constraints)
     {
-        $constraint = new LogicalOr;
+        $constraint = new LogicalOr();
 
         $constraint->setConstraints($constraints);
 
@@ -182,14 +183,14 @@ EOF;
     {
         $values = [
             'single' => [
-                new \FalsyConstraint,
-                new \FalsyConstraint,
-                new \FalsyConstraint,
+                new \FalsyConstraint(),
+                new \FalsyConstraint(),
+                new \FalsyConstraint(),
             ],
             'multiple' => [
-                new \FalsyConstraint,
-                new \FalsyConstraint,
-                new \FalsyConstraint,
+                new \FalsyConstraint(),
+                new \FalsyConstraint(),
+                new \FalsyConstraint(),
             ],
         ];
 
@@ -204,12 +205,12 @@ EOF;
     {
         $values = [
             'single' => [
-                new \TruthyConstraint,
+                new \TruthyConstraint(),
             ],
             'multiple' => [
-                new \FalsyConstraint,
-                new \TruthyConstraint,
-                new \FalsyConstraint,
+                new \FalsyConstraint(),
+                new \TruthyConstraint(),
+                new \FalsyConstraint(),
             ],
         ];
 
@@ -220,7 +221,7 @@ EOF;
         }
     }
 
-    private function stringify(array $constraints): string
+    private function stringify(array $constraints) : string
     {
         return \implode(
             ' or ',
