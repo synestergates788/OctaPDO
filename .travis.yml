@@ -10,10 +10,10 @@ php:
   #- hhvm # on Trusty only
   #- nightly
 
-#matrix:
-#  include:
-    #- php: 7.0
-#      dist: precise
+matrix:
+  include:
+    - php: 5.5
+      dist: precise
 
 #sudo: false
 
