@@ -10,11 +10,11 @@ php:
 
 matrix:
   include:
-    - php: 7.0
+    #- php: 7.0
       dist: precise
 
 sudo: false
 
 before_script: composer install
-#script: phpunit Test.php
-script: ./build.sh
+script: phpunit
+#script: ./build.sh
