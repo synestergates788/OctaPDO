@@ -21,7 +21,10 @@ before_script:
   - composer install
   - phpenv config-rm xdebug.ini
 
+COMPOSER_ALLOW_XDEBUG=1
+
 script: php ./vendor/bin/phpunit --UnitTest
+
 
 #phpunit UnitTest
 #script: ./build.sh
