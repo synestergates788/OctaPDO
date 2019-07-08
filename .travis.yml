@@ -18,5 +18,5 @@ matrix:
 #sudo: false
 
 before_script: composer install
-script: /vendor/bin/phpunit UnitTest
+script: vendor/bin/phpunit UnitTest
 #script: ./build.sh
