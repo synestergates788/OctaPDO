@@ -7,8 +7,8 @@ php:
   #- 7.0
   - 7.1
   - 7.2
-  - hhvm # on Trusty only
-  - nightly
+  #- hhvm # on Trusty only
+  #- nightly
 
 matrix:
   include:
@@ -18,5 +18,5 @@ matrix:
 #sudo: false
 
 before_script: composer install
-#script: phpunit --debug
+script: phpunit UnitTest.php
 #script: ./build.sh
