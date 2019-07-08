@@ -1,6 +1,6 @@
 {
     "require": {
-        "phpunit/phpunit": "^7.5",
+        "phpunit/phpunit": "^6.0",
         "php": ">=5.4.0"
     }
 }
