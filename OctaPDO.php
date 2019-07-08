@@ -33,7 +33,7 @@ class OctaPDO extends Controller{
 
     public function insert($array,$table){
         /*clear init variable*/
-        $this->last_id = '';
+        $this->last_id = '';asd
         /*end clearing init variables*/
 
         try{
