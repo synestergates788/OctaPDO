@@ -1,5 +1,5 @@
 # OctaPDO
-A light-weight PHP-PDO database class used by [squeedPHP](https://github.com/synestergates788/squeedPHP) framework. This database class is inspired by codeigniter active record.
+A light-weight PHP-PDO database class, this database class is inspired by codeigniter's active record.
 
 [![Build Status](https://travis-ci.org/synestergates788/OctaPDO.svg?branch=master)](https://travis-ci.org/synestergates788/OctaPDO)
 [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) 
@@ -412,7 +412,7 @@ $db->delete($tables);
 If you want to delete all data from a table, you can use the truncate() function, or empty_table().
 <br />
 
-**Example Of Queries Using squeedPHP Active Record** <br />
+**Example Of Queries Using OctaPDO Active Record** <br />
 ```
 $select = array(
    "*",
