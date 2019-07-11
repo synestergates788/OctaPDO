@@ -209,11 +209,13 @@ class OctaPDO{
         return true;
     }
 
+    /** @scrutinizer ignore-call */
     public function insert_id(){
         return $this->last_id;
     }
 
     /*this is for join queries*/
+    /** @scrutinizer ignore-call */
     public function select($data){
         $reset = [];
         if($data){
