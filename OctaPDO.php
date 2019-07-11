@@ -1,6 +1,6 @@
 <?php
 
-class OctaPDO extends Controller{
+class OctaPDO{
     var $con;
     var $field;
     var $db;
@@ -45,8 +45,8 @@ class OctaPDO extends Controller{
                     $table_fields_val[] = "'".$val."'";
                 }
 
-                $sql_field = implode($table_fields, ",");
-                $sql_field_val = implode($table_fields_val, ",");
+                $sql_field = /** @scrutinizer ignore-call */ implode($table_fields, ",");
+                $sql_field_val = /** @scrutinizer ignore-call */ implode($table_fields_val, ",");
 
                 if($sql_field && $sql_field_val){
                     $sqls = $this->db->prepare("INSERT into {$table}({$sql_field}) VALUE ({$sql_field_val})");
@@ -84,8 +84,8 @@ class OctaPDO extends Controller{
                             $table_fields_val[] = "'".$val."'";
                         }
 
-                        $sql_field = implode($table_fields, ",");
-                        $sql_field_val = implode($table_fields_val, ",");
+                        $sql_field = /** @scrutinizer ignore-call */ implode($table_fields, ",");
+                        $sql_field_val = /** @scrutinizer ignore-call */ implode($table_fields_val, ",");
 
                         if($sql_field && $sql_field_val){
                             $sqls = $this->db->prepare("INSERT into {$table}({$sql_field}) VALUE ({$sql_field_val})");
@@ -130,8 +130,8 @@ class OctaPDO extends Controller{
                 }
             }
 
-            $sql_field = implode($table_fields, ",");
-            $sql_where_field = implode($where_fields, ",");
+            $sql_field = /** @scrutinizer ignore-call */ implode($table_fields, ",");
+            $sql_where_field = /** @scrutinizer ignore-call */ implode($where_fields, ",");
 
             if($sql_field && $sql_where_field){
                 $sqls = $this->db->prepare("UPDATE {$table} SET {$sql_field} WHERE {$sql_where_field}");
@@ -169,8 +169,8 @@ class OctaPDO extends Controller{
                         }
                     }
 
-                    $sql_field = implode($table_fields, ",");
-                    $sql_where_field = implode($where_fields, ",");
+                    $sql_field = /** @scrutinizer ignore-call */ implode($table_fields, ",");
+                    $sql_where_field = /** @scrutinizer ignore-call */ implode($where_fields, ",");
 
                     if($sql_field && $sql_where_field){
                         $sqls = $this->db->prepare("UPDATE {$table} SET {$sql_field} WHERE {$sql_where_field}");
@@ -250,7 +250,7 @@ class OctaPDO extends Controller{
             }
         }
 
-        $this->where = ($arr_check == false) ? $tmp_where : "WHERE ".$tmp_where;
+        $this->where = ($arr_check) ? "WHERE ".$tmp_where : $tmp_where;
     }
 
     public function or_where($data=null,$match=null){
@@ -277,7 +277,7 @@ class OctaPDO extends Controller{
             }
         }
 
-        $this->or_where = ($arr_check == false) ? $tmp_or_where : "OR ".$tmp_or_where;
+        $this->or_where = ($arr_check) ? "OR ".$tmp_or_where : $tmp_or_where;
     }
 
     public function where_in($field,$data){
@@ -369,7 +369,7 @@ class OctaPDO extends Controller{
 
         }
 
-        $this->like = ($arr_check == false) ? $tmp_like : "WHERE ".$tmp_like;
+        $this->like = ($arr_check) ? "WHERE ".$tmp_like : $tmp_like;
     }
 
     public function or_like($data=null,$match=null){
@@ -421,7 +421,7 @@ class OctaPDO extends Controller{
 
         }
 
-        $this->like = ($arr_check == false) ? $tmp_like : "WHERE ".$tmp_like;
+        $this->like = ($arr_check) ? "WHERE ".$tmp_like : $tmp_like;
     }
 
     public function or_not_like($data=null,$match=null){
