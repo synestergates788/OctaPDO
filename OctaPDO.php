@@ -228,7 +228,7 @@ class OctaPDO{
 
     /** @scrutinizer ignore-call */
     public function where($data=null,$match=null){
-        $tmp_where = '';
+        $tmp_where = /** @scrutinizer ignore-call */ '';
         $arr_check = false;
         if($data){
             if(is_array($data)){
