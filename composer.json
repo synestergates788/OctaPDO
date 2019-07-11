@@ -1,6 +1,13 @@
 {
-    "require": {
-        "phpunit/phpunit": "^7.5",
-        "php": ">=5.4.0"
-    }
+    "name": "octa-php/octa-pdo",
+    "description": "A light-weight PHP-PDO database class, this database class is inspired by codeigniter's active record.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Melquecedec Catang-catang",
+            "email": "melquecedec.catangcatang@outlook.com"
+        }
+    ],
+    "require": {}
 }
