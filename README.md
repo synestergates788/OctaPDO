@@ -2,6 +2,7 @@
 A light-weight PHP-PDO database class, this database class is inspired by codeigniter's active record.
 
 [![Build Status](https://travis-ci.org/synestergates788/OctaPDO.svg?branch=master)](https://travis-ci.org/synestergates788/OctaPDO)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/synestergates788/OctaPDO/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/synestergates788/OctaPDO/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/octa-php/octa-pdo/v/stable)](https://packagist.org/packages/octa-php/octa-pdo)
 [![Total Downloads](https://poser.pugx.org/octa-php/octa-pdo/downloads)](https://packagist.org/packages/octa-php/octa-pdo)
 [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) 
