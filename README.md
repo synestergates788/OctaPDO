@@ -11,7 +11,10 @@ A light-weight PHP-PDO database class, this database class is inspired by codeig
 
 ### Getting Started
 
-installing OctaPDO does not require composer, just clone the project and put it in the directory where your site locally allocated.
+installing OctaPDO via composer.
+```
+composer require octa-php/octa-pdo
+```
 
 ### Prerequisites
 
