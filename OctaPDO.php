@@ -226,6 +226,7 @@ class OctaPDO{
         return $this->select;
     }
 
+    /** @scrutinizer ignore-call */
     public function where($data=null,$match=null){
         $tmp_where = '';
         $arr_check = false;
